@@ -1,0 +1,2 @@
+class Operacione < ApplicationRecord
+end

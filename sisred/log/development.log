@@ -1,0 +1,395 @@
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (242.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (191.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOperaciones (20180822033227)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "operaciones" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "referencia" varchar, "pedimento" varchar, "cliente" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180822033227"]]
+  [1m[35m (127.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-22 03:33:15.226413"], ["updated_at", "2018-08-22 03:33:15.226413"]]
+  [1m[35m (97.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-08-21 22:36:03 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (6.0ms)
+Completed 200 OK in 92ms (Views: 43.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:36:10 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 75ms (Views: 51.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:36:34 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (167.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (184.0ms)
+Completed 200 OK in 255ms (Views: 227.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:05 -0500
+Processing by OperacionesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EUt8yAtqow/Pv5NoIeyDQX0rL/wEkOXH4wFlauV0BaUjCk/fIoc1uD/ga7/FoDWpuzuPvI1i+E3YzsoRf2eP+w==", "operacione"=>{"referencia"=>"DESI0132/18", "pedimento"=>"3809-8000132", "cliente"=>"ZONDA CORPORATION"}, "commit"=>"Create Operacione"}
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "operaciones" ("referencia", "pedimento", "cliente", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["referencia", "DESI0132/18"], ["pedimento", "3809-8000132"], ["cliente", "ZONDA CORPORATION"], ["created_at", "2018-08-22 03:37:05.393578"], ["updated_at", "2018-08-22 03:37:05.393578"]]
+  [1m[35m (144.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/operaciones/1
+Completed 302 Found in 160ms (ActiveRecord: 146.0ms)
+
+
+Started GET "/operaciones/1" for 127.0.0.1 at 2018-08-21 22:37:05 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 106ms (Views: 47.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:08 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 64ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:35 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 67ms (Views: 51.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:37 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 65ms (Views: 49.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:37 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 65ms (Views: 47.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:37 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 69ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:38 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 68ms (Views: 51.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:37:38 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 63ms (Views: 47.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:37:53 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (334.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (349.0ms)
+Completed 500 Internal Server Error in 408ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `operaciones' for #<#<Class:0x579ae78>:0x4d88fd8>
+Did you mean?  operacione
+               operaciones_url
+               @operacione):
+    1: <%= form_with(model: operaciones, local: true) do |form| %>
+    2:   <% if operacione.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(operacione.errors.count, "error") %> prohibited this operacione from being saved:</h2>
+  
+app/views/operaciones/_form.html.erb:1:in `_app_views_operaciones__form_html_erb___198053167_40546140'
+app/views/operaciones/new.html.erb:3:in `_app_views_operaciones_new_html_erb___852225658_40651680'
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:38:48 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 63ms (Views: 46.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:38:51 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 67ms (Views: 50.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:38:52 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (3.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 79ms (Views: 63.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:39:19 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 66ms (Views: 49.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:39:20 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (4.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 78ms (Views: 62.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/1" for 127.0.0.1 at 2018-08-21 22:40:09 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 66ms (Views: 47.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones/1/edit" for 127.0.0.1 at 2018-08-21 22:40:16 -0500
+Processing by OperacionesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering operaciones/edit.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (3.0ms)
+  Rendered operaciones/edit.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 83ms (Views: 64.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:40:47 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (5.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 78ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:41:57 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (4.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 83ms (Views: 66.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/operaciones" for 127.0.0.1 at 2018-08-21 22:41:58 -0500
+Processing by OperacionesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4eWsWfwWeVPqJvnKmUqZjQcZ+VzUFGWl0qCNKF0a6adxqWmTh3PUr/3YzDOKZyO8gzHpfqiTByshS1PO2fh+A==", "operacione"=>{"referencia"=>"", "pedimento"=>"", "cliente"=>""}, "commit"=>"Create Operacione"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "operaciones" ("referencia", "pedimento", "cliente", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["referencia", ""], ["pedimento", ""], ["cliente", ""], ["created_at", "2018-08-22 03:41:58.837362"], ["updated_at", "2018-08-22 03:41:58.837362"]]
+  [1m[35m (137.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/operaciones/2
+Completed 302 Found in 150ms (ActiveRecord: 138.0ms)
+
+
+Started GET "/operaciones/2" for 127.0.0.1 at 2018-08-21 22:41:58 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 64ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:42:02 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 74ms (Views: 53.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/2" for 127.0.0.1 at 2018-08-21 22:42:03 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 64ms (Views: 44.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:42:08 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 65ms (Views: 48.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones/2" for 127.0.0.1 at 2018-08-21 22:42:10 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 61ms (Views: 44.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:42:12 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 63ms (Views: 47.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/1" for 127.0.0.1 at 2018-08-21 22:42:13 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 66ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/1/edit" for 127.0.0.1 at 2018-08-21 22:42:17 -0500
+Processing by OperacionesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering operaciones/edit.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (4.0ms)
+  Rendered operaciones/edit.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 81ms (Views: 63.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/1" for 127.0.0.1 at 2018-08-21 22:42:21 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 63ms (Views: 45.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:42:31 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (3.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 78ms (Views: 61.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/operaciones" for 127.0.0.1 at 2018-08-21 22:42:58 -0500
+Processing by OperacionesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/ohZYPaQVvAZrWwJdCLlMhQgSNQcXy2Mffx1L+6kl7rMyWp3333AR+nylN6QblPa0jDolJWtMAZGM9pUdLcd5A==", "operacione"=>{"referencia"=>"DESI0133/18", "pedimento"=>"3809-8000133", "cliente"=>"ZONDA CORPORATION"}, "commit"=>"Create Operacione"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "operaciones" ("referencia", "pedimento", "cliente", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["referencia", "DESI0133/18"], ["pedimento", "3809-8000133"], ["cliente", "ZONDA CORPORATION"], ["created_at", "2018-08-22 03:42:58.386768"], ["updated_at", "2018-08-22 03:42:58.386768"]]
+  [1m[35m (134.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/operaciones/3
+Completed 302 Found in 145ms (ActiveRecord: 136.0ms)
+
+
+Started GET "/operaciones/3" for 127.0.0.1 at 2018-08-21 22:42:58 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 62ms (Views: 45.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:43:00 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 65ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/2" for 127.0.0.1 at 2018-08-21 22:43:05 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 61ms (Views: 43.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:43:07 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 64ms (Views: 47.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/new" for 127.0.0.1 at 2018-08-21 22:46:35 -0500
+Processing by OperacionesController#new as HTML
+  Rendering operaciones/new.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (4.0ms)
+  Rendered operaciones/new.html.erb within layouts/application (23.0ms)
+Completed 200 OK in 86ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones/2/edit" for 127.0.0.1 at 2018-08-21 22:46:39 -0500
+Processing by OperacionesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering operaciones/edit.html.erb within layouts/application
+  Rendered operaciones/_form.html.erb (3.0ms)
+  Rendered operaciones/edit.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 79ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/operaciones/2" for 127.0.0.1 at 2018-08-21 22:47:19 -0500
+Processing by OperacionesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Jfp+I4Jqzr8ryVtH+i5p0ja9sbImWZhZuOKCTDntfHTF8hgZSf3wOYKGvrpTydsbDJCkEqOtInMtYL6v9T8ucQ==", "operacione"=>{"referencia"=>"DESI0134/18", "pedimento"=>"3809-8000134", "cliente"=>"CASA MATUS"}, "commit"=>"Update Operacione", "id"=>"2"}
+  [1m[36mOperacione Load (1.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "operaciones" SET "referencia" = ?, "pedimento" = ?, "cliente" = ?, "updated_at" = ? WHERE "operaciones"."id" = ?[0m  [["referencia", "DESI0134/18"], ["pedimento", "3809-8000134"], ["cliente", "CASA MATUS"], ["updated_at", "2018-08-22 03:47:19.478701"], ["id", 2]]
+  [1m[35m (114.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/operaciones/2
+Completed 302 Found in 134ms (ActiveRecord: 116.0ms)
+
+
+Started GET "/operaciones/2" for 127.0.0.1 at 2018-08-21 22:47:19 -0500
+Processing by OperacionesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT  "operaciones".* FROM "operaciones" WHERE "operaciones"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering operaciones/show.html.erb within layouts/application
+  Rendered operaciones/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 66ms (Views: 47.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/operaciones" for 127.0.0.1 at 2018-08-21 22:47:21 -0500
+Processing by OperacionesController#index as HTML
+  Rendering operaciones/index.html.erb within layouts/application
+  [1m[36mOperacione Load (0.0ms)[0m  [1m[34mSELECT "operaciones".* FROM "operaciones"[0m
+  Rendered operaciones/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 66ms (Views: 49.8ms | ActiveRecord: 0.0ms)
+
+
